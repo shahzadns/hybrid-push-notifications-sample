@@ -14,6 +14,8 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/jquery-1.11.2.min.js"></script>
+    <script src="lib/PushNotification.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -33,6 +35,14 @@
           <div class="col">
             <button class="button button-positive" data-ng-click="register()">Register</button>
             <button class="button button-positive" data-ng-click="unRegister()">Un Register</button>
+            <button class="button button-balanced" data-ng-click="sendPushNotification()">Send Push Notification</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <ul id="app-status-ul" class="list">
+
+            </ul>
           </div>
         </div>
       </ion-content>

@@ -15,6 +15,7 @@
         /*VM functions*/
         $scope.register = register;
         $scope.unRegister = unRegister;
+        $scope.sendPushNotification = sendPushNotification;
 
         /*VM properties*/
         //...
@@ -27,6 +28,11 @@
         //to get app un-register from push notifications services e.g GCM
         function unRegister() {
             alert('You chose to Un-register!');
+        }
+
+        //to send a push notification to the message server.
+        function sendPushNotification() {
+            alert('You chose to send a push notification!');
         }
     }
 })();
