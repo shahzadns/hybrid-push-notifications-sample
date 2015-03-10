@@ -21,8 +21,11 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
+    <script src="js/config.js"></script>
     <script src="js/app.js"></script>
     <script src="js/main.controller.js"></script>
+    <script src="js/notifications.service.js"></script>
+
   </head>
   <body ng-app="starter">
 
@@ -41,7 +44,7 @@
         <div class="row">
           <div class="col">
             <ul id="app-status-ul" class="list">
-
+              <li class="item" data-ng-repeat="notification in notifications" data-ng-bind="notification.message"></li>
             </ul>
           </div>
         </div>
