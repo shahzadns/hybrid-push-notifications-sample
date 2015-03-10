@@ -1,7 +1,8 @@
 /**
- * Created by sj on 3/10/2015.
+ * Created by shahzad on 3/10/2015.
  */
-//requires other modules
+
+//requires dependency modules
 var express = require('express');
 var bodyParser = require('body-parser');
 var gcm = require('node-gcm');
@@ -23,6 +24,12 @@ app.use(bodyParser.urlencoded({
     extended : true
 }));
 app.use(bodyParser.json());
+//allowing CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 /* setting up endpoints */
 app.get('/', function(req, res){
