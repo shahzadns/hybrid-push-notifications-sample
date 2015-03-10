@@ -16,6 +16,9 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
 
+    //making pushNotification object to globally accessible.
+    pushNotification = window.plugins.pushNotification;
+
     //deviceReady();
     notificationService.initialize();
   });

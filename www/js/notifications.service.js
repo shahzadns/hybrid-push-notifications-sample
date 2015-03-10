@@ -14,14 +14,24 @@
     function notificationService( $rootScope, $http ) {
 
         var notificationsRecords = [],
-            isAndroid, self, regID;
+            self, isAndroid, regID;
 
         return {
             initialize: function() {
+                console.log('initialization notificationService');
+
                 isAndroid = ionic.Platform.isAndroid();
+                self = this;
+
+                //HECK ecb of pushNotification
+                window.onNotification = this.onNotification;
+                console.log(this);
+                console.log( !!window.onNotification);
+
                 notificationsRecords.push({
                     message: 'pushNotification initialized.'
                 });
+
                 $rootScope.$emit('pushNotification:initialized', {});
             },
             getNotificationsRecords: function() {
@@ -40,7 +50,7 @@
                         this.errorHandler,
                         {
                             senderID: config.GCMProjectNumber,
-                            ecb: 'self.onNotification'
+                            ecb: 'onNotification'
                         });
                 }
             },
@@ -108,6 +118,8 @@
                 notificationsRecords.push({
                     message: 'registered successfully.'
                 });
+
+                regID = [ evt.regid ];
             },
             onNotificationMessage: function( evt ) {
                 console.log('onNotificationMessage:', evt.payload.message);
