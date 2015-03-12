@@ -38,10 +38,11 @@ app.get('/', function(req, res){
 
 app.post('/send-notification', function(req, res){
     /*GCM business logic*/
-    var regIDs = req.body.regIDs || ['APA91bFS6o8Ycd2s_22uVnhwEsdwRM0PhBM3EXdtrN2qWEDP4CYlbBLKEWkqO9_yF0F8aAv94zjFsD5rvJdzf6oDjeysIHgtTNdLmDko0sdhwpo39kMNslz04Vb4529BJS3T43QLDpGi5vCISv4it7fcJVZV-XYndNVUfrqAmm1_UAeBmP4fZDSnD4X5CJykV7uE0BOB0Xu8'];
+    var regIDs = [req.body.regID]; // it can also be multiple when needed
 
     var message = new gcm.Message();
-    message.addData('message', req.body.message || 'This is a test push notification');
+    message.addData('title', req.body.title || 'Title Rocks!');
+    message.addData('message', req.body.message || 'This is lovely description.');
 
     sender.send(message, regIDs, function (err, result) {
         if(err) {
