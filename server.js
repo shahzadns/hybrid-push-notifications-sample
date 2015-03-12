@@ -38,6 +38,15 @@ app.get('/', function(req, res){
 
 app.post('/send-notification', function(req, res){
     /*GCM business logic*/
+
+    if(!req.body.regID){
+        console.error('push notification: regID missing');
+        res.send({
+            message: 'push notification: regID missing.'
+        });
+        return;
+    }
+
     var regIDs = [req.body.regID]; // it can also be multiple when needed
 
     var message = new gcm.Message();
